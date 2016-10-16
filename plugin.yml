@@ -1,0 +1,30 @@
+name: AdminHelp
+version: 1.0.0
+api: [1.0.0, 2.0.0]
+author: Primus
+main: primus\AdminHelp
+
+commands:
+  ask:
+    description: "Ask an admin for help"
+    usage: "/ask <...question>"
+    permission: adminhelp.command.ask
+  reply:
+    description: "Answer your player help message"
+    usage: "/reply <player> <...answer>"
+    permission: adminhelp.command.reply
+
+permissions:
+  adminhelp.*:
+    default: false
+    children:
+      adminhelp.command.*:
+        description: "Permission for all commands"
+        children:
+          adminhelp.command.ask:
+            default: true
+          adminhelp.command.reply:
+            default: op
+      adminhelp.helper:
+        default: op
+        description: "Allows player to see help requests"
